@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgriTech</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  <style>
+    body {
+      background-image: url('img.jpg');
+      background-size: cover;
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+      color: mediumseagreen;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .warning {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .container {
+      background: #edf2f7;
+      font-weight: bold;
+      padding: 20px;
+      border-radius: 15px;
+      background-image: url('banner.jpg');
+      background-size: cover;
+      height: 650px;
+      margin-top: 50px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      color: #495057;
+    }
+
+    select,
+    input {
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      background-color: mediumseagreen;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #4CAF50;
+    }
+
+    .card {
+      margin-top: 20px;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container my-3 mt-3">
+    <h1 class="text-success">Crop Yield Prediction System</h1>
+
+    <form action="/showWeather" method="POST">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="district">Enter the location</label>
+          <select name="district" id="district" class="form-control">
+            <label for="district">Select a District:</label>
+
+            <option value="bagalkot">Bagalkot</option>
+            <option value="ballari">Ballari</option>
+            <option value="belagavi">Belagavi</option>
+            <option value="bengaluru-urban">Bengaluru Urban</option>
+            <option value="bengaluru-rural">Bengaluru Rural</option>
+            <option value="bijapur">Bijapur</option>
+            <option value="bidar">Bidar</option>
+            <option value="chikballapur">Chikballapur</option>
+            <option value="chamarajanagar">Chamarajanagar</option>
+            <option value="chitradurga">Chitradurga</option>
+            <option value="chikkamagaluru">Chikkamagaluru</option>
+            <option value="davanagere">Davanagere</option>
+            <option value="dakshina-kannada">Dakshina Kannada</option>
+            <option value="dharwad">Dharwad</option>
+            <option value="gadag">Gadag</option>
+            <option value="gulbarga">Gulbarga</option>
+            <option value="hassan">Hassan</option>
+            <option value="haveri">Haveri</option>
+            <option value="kodagu">Kodagu</option>
+            <option value="kolar">Kolar</option>
+            <option value="koppal">Koppal</option>
+            <option value="mandya">Mandya</option>
+            <option value="mysuru">Mysuru</option>
+            <option value="raichur">Raichur</option>
+            <option value="ramanagara">Ramanagara</option>
+            <option value="shivamogga">Shivamogga</option>
+            <option value="tumakuru">Tumakuru</option>
+            <option value="udupi">Udupi</option>
+            <option value="uttara-kannada">Uttara Kannada</option>
+            <option value="vijayapura">Vijayapura</option>
+            <option value="yadgir">Yadgir</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="pincode">Pincode</label>
+          <input type="text" id="zip_code" name="zip_code" placeholder="Enter Pincode" class="form-control" required>
+        </div>
+
+        <div class="col-md-4">
+          <label for="nitrogen">Nitrogen</label>
+          <input type="number" id="nitrogen" name="nitrogen" placeholder="Enter Nitrogen" class="form-control" required>
+        </div>
+
+        <div class="col-md-4">
+          <label for="phosphorus">Phosphorus</label>
+          <input type="number" id="phosphorus" name="phosphorus" placeholder="Enter Phosphorus" class="form-control" required>
+        </div>
+
+        <div class="col-md-4">
+          <label for="potassium">Potassium</label>
+          <input type="number" id="potassium" name="potassium" placeholder="Enter Potassium" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary btn-lg">Predict Yield</button>
+        </div>
+      </div>
+    </form>
+
+    {% if result %}
+    <div class="card bg-dark" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">The Predicted Yield per Hectare is:</h5>
+        <p class="card-text">{{ result }}</p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>
